@@ -1,0 +1,1 @@
+/home/kassem/Desktop/Diam/php/laravel/orders/resources/views/client/landing.blade.php
