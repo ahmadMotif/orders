@@ -47,12 +47,20 @@ class OrdersController extends Controller
         $this->validateWith([
             'title' => 'required|max:255'
         ]);
-
+        
+        $files = $request->file('files');
+        if($files) {
+            $path = $files->store('public/storage');
+        }
+        
         $order = new Order();
         $order->title = $request->title;
         $order->user_id = \Auth()->user()->id;
         $order->slug = str_slug($request->title, '-');
         $order->description = $request->description;
+        if($files) {
+            $order->files =$path;
+        } 
         $order->status = OrderStatus::Administrator;
         $order->save();
 

@@ -61,3 +61,8 @@ Route::prefix('manage')
 
 // Orders Routes
 Route::resource('/orders', 'Client\OrdersController')->middleware('auth');
+// Comments 
+Route::resource('comment', 'Client\CommentController', ['only' => ['update', 'destroy']]);
+Route::post('comment/create/{order}', 'Client\CommentController@addOrderComment')->name('comment.store');
+// Users Profils
+Route::resource('/profile', 'UserProfileController');

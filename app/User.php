@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'deleted_at',
+        'name', 'email', 'password', 'deleted_at', 'image', 'about',
     ];
 
     /**
@@ -95,5 +95,11 @@ class User extends Authenticatable
     public function orders ()
     {
         return $this->hasMany('App\Order', 'user_id');
+    }
+
+    // Relations With Comments
+    public function comments ()
+    {
+        return $this->hasMany('App\Comment', 'user_id');
     }
 }

@@ -8,7 +8,7 @@
         <strong>Create New Printing Order</strong>
       </div>
       <div class="card-body">
-        <form class="form-group px-3" action="{{ route('orders.store') }}" method="POST">
+        <form class="form-group px-3" action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="row">
             <div class="col-sm-12">
@@ -32,6 +32,15 @@
             </div>
           </div>
           {{-- Row Description --}}
+
+          <div class="row">
+            <div class="form-group">
+              <label for="files">Upload Order Files</label>
+              <input type="file" name="files" class="form-control-file" id="files">
+            </div>
+          </div>
+          {{-- Row Files --}}
+
           <button class="btn btn-lg btn-primary" type="submit">Send</button>
         </form>
         {{-- Form Post --}}

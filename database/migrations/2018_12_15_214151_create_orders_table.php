@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description')->nullable();
+            $table->string('files')->nullable();
             $table->string('category')->nullable();
             $table->tinyInteger('accepted')->default(1);
             $table->tinyInteger('customer_accepted')->default(1);
@@ -27,7 +28,7 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
 
             $table->softDeletes();
-            $table->index(['deleted_at']);
+            // $table->index(['deleted_at']);
             $table->foreign('user_id')
                 ->references('id')->on('users')->onDelete('cascade');
         });

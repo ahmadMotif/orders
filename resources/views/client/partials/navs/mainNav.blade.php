@@ -55,6 +55,8 @@
               </form>
 
               <a class="dropdown-item" href="{{ route('orders.index') }}">My Orders</a>
+
+              <a class="dropdown-item" href="{{ route('profile.show',   Auth::user()->id) }}">My Profile</a>
             </div>
           </li>
         @endguest

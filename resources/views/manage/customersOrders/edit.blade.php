@@ -32,7 +32,7 @@
                 </strong>
               </div>
               <div class="card-body">
-                <form class="form-signin" action="{{ route('customers-orders.update', $order->id) }}" method="POST">
+                <form class="form-signin" action="{{ route('customers-orders.update', $order->id) }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
                   <div class="row">
@@ -47,6 +47,21 @@
                     </div>
                   </div>
                   <!-- /.row Name-->
+                  
+                  <div class="row">
+                    <div class="col-6">
+                    <a href="{{ Storage::url($order->files) }}" target="_blank">Install Files</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="files">Upload New Orders Files Updating</label>
+                        <input type="file" name="files" class="form-control-file" id="files">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.row Files -->
+
+
                   @role( [ 'administrator', 'arbitrator' ] )
                   <div class="form-group">
                     <div class="form-check">

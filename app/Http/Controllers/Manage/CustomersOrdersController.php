@@ -13,6 +13,7 @@ use App\Notifications\LanguageCheckerReport;
 use App\Notifications\TechnicalProducerReport;
 use App\Notifications\FinanceReport;
 use \App\Enums\OrderStatus;
+use App\Comment;
 
 class CustomersOrdersController extends Controller
 {
@@ -161,9 +162,17 @@ class CustomersOrdersController extends Controller
             'title' => 'required|max:255',
         ]);
 
+        $files = $request->file('files');
+        if($files) {
+            $path = $files->store('public/storage');
+        };
+
         $order = Order::findOrFail($id);
         $order->title = $request->title;
         $order->accepted = $request->acceptable;
+        if($files) {
+            $order->files =$path;
+        }
         // Administrator Watching
         if(\Auth::user()->hasRole('administrator') && $order->status === OrderStatus::Administrator) {
             $order->status = OrderStatus::Arbitrator;

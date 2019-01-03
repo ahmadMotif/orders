@@ -9,11 +9,19 @@ use App\Enums\OrderStatus;
 class Order extends Model
 {
     use Notifiable;
+    
+    protected   $fillable = [ 'user_id', 'title', 'slug', 'description', 'files', 'category', 'accepted', 'customer_accepted', 'status' ];
 
     //  Relations With User
     public function user ()
     {
         return $this->belongsTo('App\User', 'user_id');
+    }
+
+    // Relations With Comments
+    public function comments ()
+    {
+        return $this->hasMany('App\Comment', 'order_id');
     }
 
     // New Order Scope

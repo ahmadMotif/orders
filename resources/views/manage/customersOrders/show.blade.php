@@ -31,6 +31,10 @@
                     <dd class="col-sm-9">{{ $order->title }}</dd>
                     <dt class="col-sm-3">order Description</dt>
                     <dd class="col-sm-9">{{ $order->description }}</dd>
+                    <dt class="col-sm-3">order Files</dt>
+                    <dd class="col-sm-9">
+                      <a href="{{ Storage::url($order->files) }}" target="_blank">Open Files</a>
+                    </dd>
                     <dt class="col-sm-3">order Owner</dt>
                     <dd class="col-sm-9">{{ $order->user->name }}</dd>
                     <dt class="col-sm-3">order Status</dt>
@@ -60,6 +64,37 @@
               {{-- /. Card Body --}}
             </div>
             {{-- /. Card --}}
+
+
+            @foreach($order->comments as $comment)
+            <div class="comments mt-3">
+              
+              <div class="media">
+                <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="mr-3" alt="..." width="64" height="64">
+
+                <div class="media-body">
+                  <h5 class="mt-0">{{ $comment->user()->first()->name   }}</h5>
+                  <small>{{   $comment->created_at->diffForHumans() }}</small>
+                  <p>{{ $comment->body }}</p>
+                </div>
+              </div>
+            </div>
+            <hr>
+            @endforeach
+            <!-- Comments -->
+
+            <div class="add-comment">
+              <form action="{{ route('comment.store', $order->id) }}" method="POST">
+              @csrf
+              <div class="form-group">
+                <label for="comment">Add Your Comment</label>
+                <textarea class="form-control" id="comment" rows="3" name="body"></textarea>
+              </div>
+              <button class="btn btn-lg btn-primary" type="submit">Comment</button>
+              </form>
+            </div>
+          </div>
+
           </div>
           {{-- /. Col 12 --}}
         </div>
