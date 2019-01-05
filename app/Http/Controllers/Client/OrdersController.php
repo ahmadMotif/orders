@@ -49,8 +49,27 @@ class OrdersController extends Controller
         ]);
         
         $files = $request->file('files');
-        if($files) {
-            $path = $files->store('public/storage');
+        // if($files) {
+        //     $path = $files->store('public/storage');
+        // }
+        $path = $files ? $files->store('public/storage') : $order->files;
+
+        $contract_img = $request->file('contract_img');
+        $path_contract_img = $contract_img ? $contract_img : $order->contract_img;
+
+        $customer_photo = $request->file('photo');
+        if($customer_photo) {
+            $customer_photo_path = $customer_photo->store('public/storage');
+        }
+
+        $customer_cv = $request->file('cv');
+        if($customer_cv) {
+            $customer_cv_path = $customer_cv->store('public/storage');
+        }
+
+        $customer_passport_img = $request->file('passport_img');
+        if($customer_passport_img) {
+            $customer_passport_img_path = $customer_passport_img->store('public/storage');
         }
         
         $order = new Order();
@@ -58,9 +77,21 @@ class OrdersController extends Controller
         $order->user_id = \Auth()->user()->id;
         $order->slug = str_slug($request->title, '-');
         $order->description = $request->description;
-        if($files) {
+       
+        $order->category = $request->category;
+        $order->applicant_address = $request->applicant_address;
+        $order->postal_code = $request->postal_code;
+        $order->band_details = $request->band_details;
+        $order->translated = $request->is_translated;
+        $order->original_author = $request->original_author;
+        $order->delivery_way = $request->delivery_way;
+        $order->source_language= $request->source_language;
+        // if($files) {
             $order->files =$path;
-        } 
+        // } 
+        $customer_photo ? ($order->photo = $customer_photo_path) : $order->photo;
+        $customer_cv ? ($order->cv = $customer_cv_path) : $order->cv;
+        $customer_passport_img ? ($order->passport_img = $customer_passport_img_path) : $order->passport_img;
         $order->status = OrderStatus::Administrator;
         $order->save();
 
@@ -78,7 +109,8 @@ class OrdersController extends Controller
     public function show($id)
     {
         $order = Order::where('id', $id)->first();
-        return view('client.orders.show')->withOrder($order);
+        $audits = $order->audits;
+        return view('client.orders.show')->with(['order' => $order, 'audits' => $audits]);
     }
 
     /**
@@ -110,7 +142,8 @@ class OrdersController extends Controller
         $order->user_id = \Auth()->user()->id;
         $order->slug = str_slug($request->title, '-');
         $order->description = $request->description;
-        $order->customer_accepted = $request->customer_accepted;
+        $request->customer_accepted ? $request->customer_accepted : $order->customer_accepted;
+        // $order->customer_accepted = $request->customer_accepted;
         $order->save();
 
         $technical_producer = User::technicalProducer()->get();

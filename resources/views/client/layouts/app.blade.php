@@ -24,7 +24,7 @@
 	<div id="app">
 		@include('client.partials.navs.mainNav')
 		<main class="main-content">
-			<div class="pt-4">
+			<div class="py-5">
 				@yield('content')
 			</div>
 		</main>

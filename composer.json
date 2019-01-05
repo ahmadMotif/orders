@@ -13,7 +13,9 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "santigarcor/laratrust": "5.0.*"
+        "owen-it/laravel-auditing": "^8.0",
+        "santigarcor/laratrust": "5.0.*",
+        "tightenco/parental": "0.5"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

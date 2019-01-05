@@ -23,7 +23,7 @@
 <body>
 	<div id="app">
 		@include('manage.partials.navs.mainNav')
-		<main class="main-content mt-4">
+		<main class="main-content mt-5">
       <div class="container-fluid">
         <div class="row">
           <nav class="col-md-2 d-none d-md-block bg-light sidebar border-right">

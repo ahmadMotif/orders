@@ -21,10 +21,25 @@ class CreateOrdersTable extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
             $table->string('files')->nullable();
+            $table->string('type')->nullable();
             $table->string('category')->nullable();
             $table->tinyInteger('accepted')->default(1);
             $table->tinyInteger('customer_accepted')->default(1);
             $table->tinyInteger('status')->unsigned()->default(OrderStatus::newOrder);
+
+            $table->string('applicant_address')->nullable();
+            $table->string('phone number')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('cv')->nullable();
+            $table->string('passport_img')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('delivery_way')->nullable();
+            $table->string('band_details')->nullable();
+            $table->boolean('translated')->default(0);
+            $table->string('contract_img')->nullable();
+            $table->string('original_author')->nullable();
+            $table->string('source_language')->nullable();
+
             $table->timestamps();
 
             $table->softDeletes();

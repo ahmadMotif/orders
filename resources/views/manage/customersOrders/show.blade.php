@@ -101,5 +101,20 @@
       </div>
       {{-- /. Row --}}
     </div>
+
+    <ul>
+      @forelse ($audits as $audit)
+      <li>{{ $audit->getMetadata(true, JSON_PRETTY_PRINT) }}</li>
+      @empty
+      <p></p>
+      @endforelse
+      {{-- @forelse ($audits as $audit)
+      @if($audit->event->update)
+        <li>{{ $audit->event->update }}</li>
+      @endif
+      @empty
+      <p></p>
+      @endforelse --}}
+    </ul>
   </div>
 @endsection

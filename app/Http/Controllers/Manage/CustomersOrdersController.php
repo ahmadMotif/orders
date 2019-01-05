@@ -109,8 +109,9 @@ class CustomersOrdersController extends Controller
             $order = Order::print()->where('id', $id)->with('user')->first();
         }
         $order = Order::where('id', $id)->with('user')->first();
+        $audits = $order->audits;
         \Auth::user()->unreadNotifications()->update(['read_at' => now()]);
-        return view('manage.customersOrders.show')->withOrder($order);
+        return view('manage.customersOrders.show')->with(['order' => $order, 'audits' => $audits]);
     }
 
     /**

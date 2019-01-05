@@ -5,12 +5,17 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\OrderStatus;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Order extends Model
+class Order extends Model implements Auditable
 {
     use Notifiable;
+    use \OwenIt\Auditing\Auditable;
+    // use Tightenco\Parental\HasChildren;
     
-    protected   $fillable = [ 'user_id', 'title', 'slug', 'description', 'files', 'category', 'accepted', 'customer_accepted', 'status' ];
+    protected   $fillable = [
+        'user_id', 'title', 'slug', 'description', 'files', 'category', 'accepted', 'customer_accepted', 'status', 'type', 'applicant_address', 'phone number', 'postal_code', 'cv', 'passport_img', 'photo', 'delivery_way', 'band_details', 'translated', 'contract_img', 'original_author', 'source_language'
+    ];
 
     //  Relations With User
     public function user ()

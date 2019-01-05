@@ -64,9 +64,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $user_img = $data['image'];
+        $user_img_path = $user_img->store('public/storage');
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'image' => $user_img_path,
             'password' => Hash::make($data['password']),
         ]);
     }
