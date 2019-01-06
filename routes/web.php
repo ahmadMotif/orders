@@ -29,6 +29,13 @@ Route::prefix('manage')
         // Customers Orders Manage
         Route::resource('/customers-orders', 'Manage\CustomersOrdersController');
 
+        // Contract To Pdf
+        Route::get('/contract', function() {
+            // return view('manage.contracts.contract');
+
+            $pdf = PDF::loadView('manage.contracts.contract');
+            return $pdf->download('contract.pdf');
+        });
         // superadministrator Group
         Route::middleware('role:superadministrator|administrator')
             ->group( function () {

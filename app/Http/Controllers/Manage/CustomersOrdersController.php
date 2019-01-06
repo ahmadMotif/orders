@@ -169,10 +169,21 @@ class CustomersOrdersController extends Controller
         };
         $category = $request->category;
         $finished_at = $request->finished_at;
+        $language_cheker_report = $request->language_cheker_report;
+        $order_en_title = $request->order_en_title;
+        $author_en_name = $request->author_en_name;
+        $order_words_count = $request->order_words_count;
+        $order_pages_count = $request->order_pages_count;
+        $order_isbn = $request->order_isbn;
 
         $aritrator_decision = $request->file('aritrator_decision');
         if($aritrator_decision) {
             $aritrator_decision_path = $aritrator_decision->store('public/storage');
+        }
+
+        $order_producer_contract = $request->file('order_producer_contract');
+        if($order_producer_contract) {
+            $order_producer_contract_path = $order_producer_contract->store('public/storage');
         }
 
         $order = Order::findOrFail($id);
@@ -180,10 +191,19 @@ class CustomersOrdersController extends Controller
         $order->accepted = $request->acceptable;
         $category ? ($order->category = $category) : $order->category;
         $finished_at ? ($order->finished_at = $finished_at) : $order->finished_at;
+        $language_cheker_report ? ($order->language_cheker_report = $language_cheker_report) : $order->language_cheker_report;
+        $order_en_title ? ($order->en_title = $order_en_title) : $order->en_title;
+        $author_en_name ? ($order->en_author = $author_en_name) : $order->en_author;
+        $order_words_count ? ($order->words_count = $order_words_count ) : $order->words_count;
+        $order_pages_count ? ($order->pages_count = $order_pages_count ) : $order->pages_count;
+        $order_isbn ? ($order->isbn = $order_isbn ) : $order->isbn;
+
         if($files) {
             $order->files =$path;
         }
         $aritrator_decision ? ($order->aritrator_decision = $aritrator_decision_path ) : $order->aritrator_decision;
+        $order_producer_contract ? ($order->order_producer_contract = $order_producer_contract_path ) : $order->order_producer_contract;
+
         // Administrator Watching
         if(\Auth::user()->hasRole('administrator') && $order->status === OrderStatus::Administrator) {
             $order->status = OrderStatus::Arbitrator;
