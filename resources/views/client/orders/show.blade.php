@@ -31,6 +31,8 @@
                     <dd class="col-sm-9">{{ $order->title }}</dd>
                     <dt class="col-sm-3">order Description</dt>
                     <dd class="col-sm-9">{{ $order->description }}</dd>
+                    <dt class="col-sm-3">Category</dt>
+                    <dd class="col-sm-9">{{ $order->category }}</dd>
                     <dt class="col-sm-3">order Files</dt>
                     <dd class="col-sm-9">
                       <a href="{{ Storage::url($order->files) }}" target="_blank">Open Files</a>
@@ -49,6 +51,18 @@
                     </dd>
                     <dt class="col-sm-3 text-truncate">Created At</dt>
                     <dd class="col-sm-9">{{ $order->created_at }}</dd>
+                    <dt class="col-sm-3 text-truncate">Passport Image</dt>
+                    <dd class="col-sm-9">
+                      <img src="{{ Storage::url($order->passport_img) }}" alt="" width="150" height="150">
+                    </dd>
+                    <dt class="col-sm-3 text-truncate">The Book</dt>
+                    <dd class="col-sm-9">
+                      @if ($order->translated)
+                        translated
+                      @else
+                        I am The Auther
+                      @endif
+                    </dd>
                     <dt class="col-sm-3">Nesting</dt>
                     <dd class="col-sm-9">
                       <dl class="row">

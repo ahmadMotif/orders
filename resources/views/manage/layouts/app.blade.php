@@ -11,7 +11,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
 		<!-- Custom fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -19,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
 	<div id="app">
@@ -39,8 +41,10 @@
       </div>
       {{-- Container --}}
 		</main>
-	</div>
+  </div>
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+
+  @yield('scripts')
 </body>
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
 </html>

@@ -47,23 +47,66 @@
                     </div>
                   </div>
                   <!-- /.row Name-->
-                  
+
+                  @role('arbitrator')
+                  <div class="row">
+                    <div class="col-sm-12 form-group">
+                      <label for="category">Chose Category</label>
+                      <select id="category" class="form-control" name="category">
+                        <option selected>Choose...</option>
+                        <option value="category-one">categiry one</option>
+                        <option value="category-tow">categiry tow</option>
+                        <option value="category-three">categiry three</option>
+                        <option value="category-foure">categiry four</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- /.row Category For Arbitrator-->
+                  <div class="row">
+                    <div class="col-sm-6 form-group">
+                      <label for="aritrator_decision">Upload Arbitrtor decision document</label>
+                      <input type="file" name="aritrator_decision" class="form-control-file" id="aritrator_decision">
+                    </div>
+                    <!-- /.row Finished date For Arbitrator-->
+                   
+                    <div class="col-sm-6 form-group">
+                      <label for="finished_at">finished date</label>
+                      <input class="form-control" name="finished_at" id="finished_at" type="text" placeholder="The finished_at">
+                    </div>
+                    <!-- /.row Finished date For Arbitrator-->
+                  </div>
+                  @endrole
+                  {{-- ARBIRTATOR --}}
+
+                  @role('language_checker')
+                    <div class="row">
+                      <div class="col-sm-12 form-group">
+                        <label for="finished_at">finished date</label>
+                        <input class="form-control" name="finished_at" id="finished_at" type="text" placeholder="The finished_at">
+                      </div>
+                    </div>
+                  <!-- /.row Finished date For Arbitrator-->
+                  @endrole
+                  {{-- LANGUAGE CHECKER --}}
+
                   <div class="row">
                     <div class="col-6">
-                    <a href="{{ Storage::url($order->files) }}" target="_blank">Install Files</a>
+                      <a href="{{ Storage::url($order->files) }}" target="_blank" class="btn btn-primary">View Order Files</a>
                     </div>
+                    @role( [ 'language_checker', 'technical_producer', 'finance', 'print' ] )
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="files">Upload New Orders Files Updating</label>
+                        <label for="files">Upload revised copy</label>
                         <input type="file" name="files" class="form-control-file" id="files">
                       </div>
                     </div>
+                    @endrole
                   </div>
                   <!-- /.row Files -->
 
 
                   @role( [ 'administrator', 'arbitrator' ] )
-                  <div class="form-group">
+                  <div class="form-group mt-2">
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="acceptable" id="acceptable" value="1" checked>
                       <label class="form-check-label" for="acceptable">

@@ -46,10 +46,10 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="address">address</label>
-                <input class="form-control {{ $errors->has('address') ? ' is-invalid' : ''}}" name="address" id="address" type="text" placeholder="The Book address" value="{{ old('address') }}">
-                @if ($errors->has('address'))
-                  <small class="text-danger">{{ $errors->first('address') }}</small>
+                <label for="applicant_address">applicant address</label>
+                <input class="form-control {{ $errors->has('applicant_address') ? ' is-invalid' : ''}}" name="applicant_address" id="applicant_address" type="text" placeholder="applicant address" value="{{ old('applicant_address') }}">
+                @if ($errors->has('applicant_address'))
+                  <small class="text-danger">{{ $errors->first('applicant_address') }}</small>
                 @endif
               </div>
             </div>
@@ -59,10 +59,10 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="phone">phone</label>
-                <input class="form-control {{ $errors->has('phone') ? ' is-invalid' : ''}}" name="phone" id="phone" type="text" placeholder="The Book phone" value="{{ old('phone') }}">
-                @if ($errors->has('phone'))
-                  <small class="text-danger">{{ $errors->first('phone') }}</small>
+                <label for="phone_number">phone number</label>
+                <input class="form-control {{ $errors->has('phone_number') ? ' is-invalid' : ''}}" name="phone_number" id="phone_number" type="text" placeholder="phone number" value="{{ old('phone_number') }}">
+                @if ($errors->has('phone_number'))
+                  <small class="text-danger">{{ $errors->first('phone_number') }}</small>
                 @endif
               </div>
             </div>
@@ -121,7 +121,7 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="delivery_way">delivery_way</label>
+                <label for="delivery_way">delivery way</label>
                 <input class="form-control {{ $errors->has('delivery_way') ? ' is-invalid' : ''}}" name="delivery_way" id="delivery_way" type="text" placeholder="The Book delivery_way" value="{{ old('delivery_way') }}">
                 @if ($errors->has('delivery_way'))
                   <small class="text-danger">{{ $errors->first('delivery_way') }}</small>
@@ -134,7 +134,7 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="band_details">band_details</label>
+                <label for="band_details">band details</label>
                 <input class="form-control {{ $errors->has('band_details') ? ' is-invalid' : ''}}" name="band_details" id="band_details" type="text" placeholder="The Book band_details" value="{{ old('band_details') }}">
                 @if ($errors->has('band_details'))
                   <small class="text-danger">{{ $errors->first('band_details') }}</small>

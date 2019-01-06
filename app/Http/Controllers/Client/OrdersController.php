@@ -52,25 +52,19 @@ class OrdersController extends Controller
         // if($files) {
         //     $path = $files->store('public/storage');
         // }
-        $path = $files ? $files->store('public/storage') : $order->files;
+        $path = $files ? $files->store('public/storage') : null;
 
         $contract_img = $request->file('contract_img');
-        $path_contract_img = $contract_img ? $contract_img : $order->contract_img;
+        $contract_img_path = $contract_img ? $contract_img->store('public/storage') : null;
 
         $customer_photo = $request->file('photo');
-        if($customer_photo) {
-            $customer_photo_path = $customer_photo->store('public/storage');
-        }
+        $customer_photo_path = $customer_photo ? $customer_photo->store('public/storage') :null;
 
         $customer_cv = $request->file('cv');
-        if($customer_cv) {
-            $customer_cv_path = $customer_cv->store('public/storage');
-        }
+        $customer_cv_path = $customer_cv ? $customer_cv->store('public/storage') : null;
 
         $customer_passport_img = $request->file('passport_img');
-        if($customer_passport_img) {
-            $customer_passport_img_path = $customer_passport_img->store('public/storage');
-        }
+        $customer_passport_img_path = $customer_passport_img ?$customer_passport_img->store('public/storage') : null;
         
         $order = new Order();
         $order->title = $request->title;
@@ -81,17 +75,17 @@ class OrdersController extends Controller
         $order->category = $request->category;
         $order->applicant_address = $request->applicant_address;
         $order->postal_code = $request->postal_code;
+        $order->phone_number = $request->phone_number;
         $order->band_details = $request->band_details;
         $order->translated = $request->is_translated;
         $order->original_author = $request->original_author;
         $order->delivery_way = $request->delivery_way;
-        $order->source_language= $request->source_language;
-        // if($files) {
-            $order->files =$path;
-        // } 
-        $customer_photo ? ($order->photo = $customer_photo_path) : $order->photo;
-        $customer_cv ? ($order->cv = $customer_cv_path) : $order->cv;
-        $customer_passport_img ? ($order->passport_img = $customer_passport_img_path) : $order->passport_img;
+        $order->source_language = $request->source_language;
+        $order->files =$path;
+        $order->photo = $customer_photo_path;
+        $order->cv = $customer_cv_path;
+        $order->contract_img = $contract_img_path;
+        $order->passport_img = $customer_passport_img_path;
         $order->status = OrderStatus::Administrator;
         $order->save();
 

@@ -21,14 +21,17 @@ class CreateOrdersTable extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
             $table->string('files')->nullable();
+            $table->string('aritrator_decision')->nullable();
             $table->string('type')->nullable();
             $table->string('category')->nullable();
+            $table->string('language_cheker_report')->nullable();
+            $table->datetime('finished_at')->nullable();
             $table->tinyInteger('accepted')->default(1);
             $table->tinyInteger('customer_accepted')->default(1);
             $table->tinyInteger('status')->unsigned()->default(OrderStatus::newOrder);
 
             $table->string('applicant_address')->nullable();
-            $table->string('phone number')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('cv')->nullable();
             $table->string('passport_img')->nullable();

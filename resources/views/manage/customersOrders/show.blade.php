@@ -22,7 +22,7 @@
             <div class="card">
               <div class="card-header">
                 <strong>{{ $order->title }}</strong>
-                <a href="{{ route('customers-orders.edit', $order->id) }}" class="float-right font-weight-normal text-white btn btn-primary">Edit order data<i class="fas fa-plus"></i></a>
+                <a href="{{ route('customers-orders.edit', $order->id) }}" class="float-right font-weight-normal text-white btn btn-primary">Edit order data</a>
               </div>
               <div class="card-body">
                 <div class="bd-example">
@@ -73,7 +73,7 @@
                 <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="mr-3" alt="..." width="64" height="64">
 
                 <div class="media-body">
-                  <h5 class="mt-0">{{ $comment->user()->first()->name   }}</h5>
+                  <h5 class="mt-0">{{ $comment->user()->first()->name }}</h5>
                   <small>{{   $comment->created_at->diffForHumans() }}</small>
                   <p>{{ $comment->body }}</p>
                 </div>

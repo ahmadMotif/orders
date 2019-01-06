@@ -167,13 +167,23 @@ class CustomersOrdersController extends Controller
         if($files) {
             $path = $files->store('public/storage');
         };
+        $category = $request->category;
+        $finished_at = $request->finished_at;
+
+        $aritrator_decision = $request->file('aritrator_decision');
+        if($aritrator_decision) {
+            $aritrator_decision_path = $aritrator_decision->store('public/storage');
+        }
 
         $order = Order::findOrFail($id);
         $order->title = $request->title;
         $order->accepted = $request->acceptable;
+        $category ? ($order->category = $category) : $order->category;
+        $finished_at ? ($order->finished_at = $finished_at) : $order->finished_at;
         if($files) {
             $order->files =$path;
         }
+        $aritrator_decision ? ($order->aritrator_decision = $aritrator_decision_path ) : $order->aritrator_decision;
         // Administrator Watching
         if(\Auth::user()->hasRole('administrator') && $order->status === OrderStatus::Administrator) {
             $order->status = OrderStatus::Arbitrator;
