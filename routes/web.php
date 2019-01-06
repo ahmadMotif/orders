@@ -36,6 +36,23 @@ Route::prefix('manage')
             $pdf = PDF::loadView('manage.contracts.contract');
             return $pdf->download('contract.pdf');
         });
+
+        // Copyright To Pdf
+        Route::get('/copyright', function() {
+            // return view('manage.copyrights.copyright');
+
+            $pdf = PDF::loadView('manage.copyrights.copyright');
+            return $pdf->download('copyright.pdf');
+        });
+
+        // award To Pdf
+        Route::get('/award', function() {
+            // return view('manage.awards.award');
+
+            $pdf = PDF::loadView('manage.awards.award');
+            return $pdf->download('award.pdf');
+        });
+
         // superadministrator Group
         Route::middleware('role:superadministrator|administrator')
             ->group( function () {

@@ -175,7 +175,13 @@ class CustomersOrdersController extends Controller
         $order_words_count = $request->order_words_count;
         $order_pages_count = $request->order_pages_count;
         $order_isbn = $request->order_isbn;
+        $order_price = $request->price;
+        $order_copies_count = $request->copies_count;
+        $print_finance_accepted = $request->print_finance_accepted;
+        $order_books_availability_store = $request->order_books_availability_store;
+        $free_author_copies = $request->free_author_copies;
 
+        
         $aritrator_decision = $request->file('aritrator_decision');
         if($aritrator_decision) {
             $aritrator_decision_path = $aritrator_decision->store('public/storage');
@@ -184,6 +190,26 @@ class CustomersOrdersController extends Controller
         $order_producer_contract = $request->file('order_producer_contract');
         if($order_producer_contract) {
             $order_producer_contract_path = $order_producer_contract->store('public/storage');
+        }
+
+        $copyright = $request->file('copyright');
+        if($copyright) {
+            $copyright_path = $copyright->store('public/storage');
+        }
+
+        $award = $request->file('award');
+        if($award) {
+            $award_path = $award->store('public/storage');
+        }
+
+        $bank_transfer_receipt = $request->file('bank_transfer_receipt');
+        if($bank_transfer_receipt) {
+            $bank_transfer_receipt_path = $bank_transfer_receipt->store('public/storage');
+        }
+
+        $shipment_receipt = $request->file('shipment_receipt');
+        if($shipment_receipt) {
+            $shipment_receipt_path = $shipment_receipt->store('public/storage');
         }
 
         $order = Order::findOrFail($id);
@@ -197,12 +223,21 @@ class CustomersOrdersController extends Controller
         $order_words_count ? ($order->words_count = $order_words_count ) : $order->words_count;
         $order_pages_count ? ($order->pages_count = $order_pages_count ) : $order->pages_count;
         $order_isbn ? ($order->isbn = $order_isbn ) : $order->isbn;
+        $order_price ? ($order->price = $order_price ) : $order->price;
+        $order_copies_count ? ($order->copies_count = $order_copies_count ) : $order->copies_count;
+        $print_finance_accepted ? $order->finance_accepted = $print_finance_accepted : $order->print_finance_accepted;
+        $order_books_availability_store ? $order->order_books_availability_store= $order_books_availability_store : $order->order_books_availability_store;
+        $free_author_copies ? ($order->free_author_copies = $free_author_copies ) : $order->free_author_copies;
 
         if($files) {
             $order->files =$path;
         }
         $aritrator_decision ? ($order->aritrator_decision = $aritrator_decision_path ) : $order->aritrator_decision;
         $order_producer_contract ? ($order->order_producer_contract = $order_producer_contract_path ) : $order->order_producer_contract;
+        $copyright ? ($order->copyright = $copyright_path ) : $order->copyright;
+        $award ? ($order->award = $award_path ) : $order->award;
+        $bank_transfer_receipt ? ($order->bank_transfer_receipt = $bank_transfer_receipt_path ) : $order->bank_transfer_receipt;
+        $shipment_receipt ? ($order->shipment_receipt = $shipment_receipt_path ) : $order->shipment_receipt;
 
         // Administrator Watching
         if(\Auth::user()->hasRole('administrator') && $order->status === OrderStatus::Administrator) {

@@ -22,10 +22,19 @@ class CreateOrdersTable extends Migration
             $table->string('en_author')->nullable();
             $table->string('words_count')->nullable();
             $table->string('pages_count')->nullable();
+            $table->string('price')->nullable();
+            $table->string('copies_count')->nullable();
+            $table->boolean('finance_accepted')->default(0);
+            $table->boolean('order_books_availability_store')->default(0);
+            $table->boolean('free_author_copies')->default(0);
             $table->string('isbn')->nullable();
+            $table->string('bank_transfer_receipt')->nullable();
+            $table->string('shipment_receipt')->nullable();
             $table->string('slug');
             $table->text('description')->nullable();
             $table->string('files')->nullable();
+            $table->string('copyright')->nullable();
+            $table->string('award')->nullable();
             $table->string('order_producer_contract')->nullable();
             $table->string('aritrator_decision')->nullable();
             $table->string('type')->nullable();
@@ -42,12 +51,12 @@ class CreateOrdersTable extends Migration
             $table->string('cv')->nullable();
             $table->string('passport_img')->nullable();
             $table->string('photo')->nullable();
-            $table->string('delivery_way')->nullable();
-            $table->string('band_details')->nullable();
+            $table->string('bank_details')->nullable();
             $table->boolean('translated')->default(0);
             $table->string('contract_img')->nullable();
             $table->string('original_author')->nullable();
             $table->string('source_language')->nullable();
+            $table->string('award_delivery_way')->nullable();
 
             $table->timestamps();
 

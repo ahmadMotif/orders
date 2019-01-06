@@ -76,10 +76,10 @@ class OrdersController extends Controller
         $order->applicant_address = $request->applicant_address;
         $order->postal_code = $request->postal_code;
         $order->phone_number = $request->phone_number;
-        $order->band_details = $request->band_details;
+        $order->bank_details = $request->bank_details;
         $order->translated = $request->is_translated;
         $order->original_author = $request->original_author;
-        $order->delivery_way = $request->delivery_way;
+        $order->award_delivery_way = $request->award_delivery_way;
         $order->source_language = $request->source_language;
         $order->files =$path;
         $order->photo = $customer_photo_path;

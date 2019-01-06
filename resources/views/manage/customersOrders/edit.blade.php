@@ -82,7 +82,7 @@
                     <div class="col-6">
                       <a href="{{ Storage::url($order->files) }}" target="_blank" class="btn btn-primary">View Order Files</a>
                     </div>
-                    @role( [ 'language_checker', 'finance', 'print' ] )
+                    @role( [ 'language_checker', 'print' ] )
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="files">Upload revised copy</label>
@@ -181,6 +181,101 @@
                   @endrole
                   {{-- Technical Producer --}}
 
+                  @role( [ 'finance' ] )
+                  <div class="row mt-3">
+                    <div class="col-sm-12 form-group">
+                      <label for="price">Price</label>
+                      <input class="form-control" name="price" id="price" type="text" placeholder="Price">
+                    </div>
+                  </div>
+                  {{-- The Price Form Fiance --}}
+
+                  <div class="row">
+                    <div class="col-sm-12 form-group">
+                      <label for="copies_count">Copies Count</label>
+                      <input class="form-control" name="copies_count" id="copies_count" type="text" placeholder="copies count">
+                    </div>
+                  </div>
+                  {{-- Copies count Form Fiance --}}
+
+                  <div class="form-group mt-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="print_finance_accepted" id="print_finance_accepted" value="1">
+                      <label class="form-check-label" for="print_finance_accepted">
+                        Accept Print the order
+                      </label>
+                    </div>
+                  </div>
+                  @endrole
+                  {{-- FINANCE --}}
+
+                  @role( [ 'print' ] )
+                  <div class="row">
+                    <div class="col-sm-6 form-group">
+                     <a href="http://orders.test/manage/copyright" class="btn btn-success">Generate copyright pdf file</a>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="copyright"></label>Upload Copyright file</label>
+                        <input type="file" name="copyright" class="form-control-file" id="copyright">
+                      </div>
+                    </div>
+                    {{-- copyight File --}}
+                  </div>
+                  <!-- /.row Generate copyright pd file Print-->
+
+                  <div class="form-group mt-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="order_books_availability_store" id="order_books_availability_store" value="1">
+                      <label class="form-check-label" for="order_books_availability_store">
+                        Book available in store
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6 form-group">
+                     <a href="http://orders.test/manage/award" class="btn btn-success">Generate Award pdf file</a>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="award"></label>Upload Award file</label>
+                        <input type="file" name="award" class="form-control-file" id="award">
+                      </div>
+                    </div>
+                    {{-- copyight File --}}
+                  </div>
+                  <!-- /.row Generate Award pdf file Print-->
+
+                  <div class="form-group mt-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="free_author_copies" id="free_author_copies" value="1">
+                      <label class="form-check-label" for="free_author_copies">
+                        Send Free Copies To Author
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="bank_transfer_receipt"></label>Upload Bank transfer receipt</label>
+                        <input type="file" name="bank_transfer_receipt" class="form-control-file" id="bank_transfer_receipt">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="shipment_receipt"></label>Upload free books shipment receipt</label>
+                        <input type="file" name="shipment_receipt" class="form-control-file" id="shipment_receipt">
+                      </div>
+                    </div>
+                  </div>
+                  @endrole
+                  {{-- print --}}
+
                   @role( [ 'administrator', 'arbitrator' ] )
                   <div class="form-group mt-2">
                     <div class="form-check">
@@ -191,26 +286,29 @@
                     </div>
 
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="acceptable" id="acceptable" value="0" checked>
+                      <input class="form-check-input" type="radio" name="acceptable" id="acceptable" value="0">
                       <label class="form-check-label" for="acceptable">
                         Reject the order
                       </label>
                     </div>
                   </div>
                   @endrole
+
+                  @role( [ 'language_checker', 'technical_producer', 'print' ] )
+                    <div class="row">
+                      <div class="col-sm-12 form-group">
+                        <label for="finished_at">finished date</label>
+                        <input class="form-control" name="finished_at" id="finished_at" type="text" placeholder="The finished_at">
+                      </div>
+                    </div>
+                  @endrole
+
                   @role( [ 'language_checker', 'technical_producer', 'finance', 'print' ] )
                   <div class="form-check" style="display: none; vidibility: hidden;">
                     <input class="form-check-input" type="radio" name="acceptable" id="acceptable" value="1" checked>
                     <label class="form-check-label" for="acceptable">
                       Accept the order
                     </label>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-12 form-group">
-                      <label for="finished_at">finished date</label>
-                      <input class="form-control" name="finished_at" id="finished_at" type="text" placeholder="The finished_at">
-                    </div>
                   </div>
                   @endrole
                   {{-- Aceptable Checkbox --}}

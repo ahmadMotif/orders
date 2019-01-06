@@ -34,6 +34,20 @@
           {{-- Row Description --}}
 
           <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="category">Chose Category</label>
+              <select id="category" class="form-control" name="category">
+                <option selected>Choose...</option>
+                <option value="category-one">categiry one</option>
+                <option value="category-tow">categiry tow</option>
+                <option value="category-three">categiry three</option>
+                <option value="category-foure">categiry four</option>
+              </select>
+            </div>
+          </div>
+          <!-- /.row Category-->
+
+          <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
                 <label for="files">Upload Order Files</label>
@@ -119,14 +133,14 @@
           <!-- /.row passport_img -->
 
           <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="delivery_way">delivery way</label>
-                <input class="form-control {{ $errors->has('delivery_way') ? ' is-invalid' : ''}}" name="delivery_way" id="delivery_way" type="text" placeholder="The Book delivery_way" value="{{ old('delivery_way') }}">
-                @if ($errors->has('delivery_way'))
-                  <small class="text-danger">{{ $errors->first('delivery_way') }}</small>
-                @endif
-              </div>
+            <div class="col-sm-12 form-group">
+              <label for="award_delivery_way">Choose award delivery way</label>
+              <select id="award_delivery_way" class="form-control" name="award_delivery_way">
+                <option selected>Choose...</option>
+                <option value="cash">Cach</option>
+                <option value="visa">Visa Cart</option>
+                <option value="un">UN</option>
+              </select>
             </div>
           </div>
           <!-- /.row delivery_way-->
@@ -134,15 +148,15 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="band_details">band details</label>
-                <input class="form-control {{ $errors->has('band_details') ? ' is-invalid' : ''}}" name="band_details" id="band_details" type="text" placeholder="The Book band_details" value="{{ old('band_details') }}">
-                @if ($errors->has('band_details'))
-                  <small class="text-danger">{{ $errors->first('band_details') }}</small>
+                <label for="bank_details">bank details</label>
+                <input class="form-control {{ $errors->has('bank_details') ? ' is-invalid' : ''}}" name="bank_details" id="bank_details" type="text" placeholder="The Book bank_details" value="{{ old('bank_details') }}">
+                @if ($errors->has('bank_details'))
+                  <small class="text-danger">{{ $errors->first('bank_details') }}</small>
                 @endif
               </div>
             </div>
           </div>
-          <!-- /.row band_details-->
+          <!-- /.row bank_details-->
 
           <div class="row">
             <div class="col-sm-12">
