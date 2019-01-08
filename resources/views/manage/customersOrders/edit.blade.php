@@ -53,7 +53,7 @@
                     <div class="col-sm-12 form-group">
                       <label for="category">Chose Category</label>
                       <select id="category" class="form-control" name="category">
-                        <option selected>Choose...</option>
+                        <option selected>{{ $order->category }}</option>
                         <option value="category-one">categiry one</option>
                         <option value="category-tow">categiry tow</option>
                         <option value="category-three">categiry three</option>

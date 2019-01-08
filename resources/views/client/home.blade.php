@@ -17,6 +17,7 @@
                     You are logged in!
                 </div>
             </div>
+
         </div>
         <div class="col-4">
             <div class="card">
@@ -37,6 +38,31 @@
                     @endforeach
                 </div>
         </div>
+    </div>
+</div>
+
+<div class="row my-5">
+    <div class="col-12">
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Actions</th>
+                    <th scope="col">old values</th>
+                    <th scope="col">new values</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if($order)
+                    @forelse ($audits as $audit)
+                    <tr>
+                        <th>{{ $audit->getMetadata(true, JSON_PRETTY_PRINT) }}</th>
+                        <th>{{ json_encode($audit->old_values, true) }}</th>
+                        <th>{{ json_encode($audit->new_values, true) }}</th> 
+                    </tr> 
+                    @endforeach
+                @endif
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

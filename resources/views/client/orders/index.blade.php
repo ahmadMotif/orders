@@ -60,11 +60,11 @@
                     <a href="{{ route('orders.edit', $order->id) }}"class="text-white badge badge-primary">
                       Edit
                     </a>
-                    <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
+                    {{-- <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
+                    </form> --}}
                   </td>
                 </tr>
               @endforeach

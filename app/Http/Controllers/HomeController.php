@@ -35,6 +35,11 @@ class HomeController extends Controller
         }
         // TODO
         // Order::create(['user_id' => 9, 'title' => 'Order With Type', 'slug' => 'order-with-type']);
-        return view('client.home');
+        $order = Order::where('user_id', \Auth::user()->id)->with('user')->first();
+        if($order) {
+            $audits = $order->audits()->with('user')->get();
+            return view('client.home')->with(['order' => $order, 'audits' => $audits]);
+        }
+        return view('client.home')->with(['order' => $order]);
     }
 }
