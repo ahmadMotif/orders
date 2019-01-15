@@ -21,7 +21,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers = User::customers()->latest()->paginate(10);
+        $customers = User::customers()->latest()->paginate(20);
         return view('manage.customers.index')->withCustomers($customers);
     }
 
