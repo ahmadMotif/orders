@@ -66,11 +66,13 @@ class RegisterController extends Controller
     {
         $user_img = $data['image'];
         $user_img_path = $user_img->store('public/storage');
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'image' => $user_img_path,
             'password' => Hash::make($data['password']),
         ]);
+        $user->syncRoles(['user']);
+        return $user;
     }
 }
